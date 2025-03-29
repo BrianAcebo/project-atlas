@@ -1,6 +1,7 @@
 import { Logo } from "./ui/Logo";
 import { Button } from "./ui/Button";
-import { useState } from "react";
+import { useState, useRef } from "react";
+import { CSSTransition } from "react-transition-group";
 
 const links = [
   {
@@ -46,7 +47,7 @@ const MainNav = () => {
 const MobileSidePanel = ({ open }: { open: boolean | undefined }) => {
   return (
     <div
-      className={`bg-brand-blue-dark ${open ? "right-0" : "-right-[100vw]"} fixed top-0 z-10 h-screen w-full overscroll-contain transition-all duration-300`}
+      className={`bg-brand-blue-dark ${open ? "visible right-0 opacity-100" : "invisible -right-[100vw] opacity-0"} fixed top-0 z-10 h-screen w-full overscroll-contain transition-all duration-300`}
     >
       <div className="flex h-full w-full items-center justify-center">
         <MainNav />
@@ -57,6 +58,7 @@ const MobileSidePanel = ({ open }: { open: boolean | undefined }) => {
 
 export const Navbar = () => {
   const [open, setOpen] = useState(false);
+  const nodeRef = useRef(null);
 
   return (
     <nav className="font-montserrat bg-brand-blue-dark fixed top-0 z-20 w-full p-4">
@@ -89,7 +91,14 @@ export const Navbar = () => {
         </div>
       </div>
 
-      <MobileSidePanel open={open} />
+      <CSSTransition
+        nodeRef={nodeRef}
+        in={open}
+        timeout={200}
+        classNames="my-node"
+      >
+        <MobileSidePanel open={open} />
+      </CSSTransition>
     </nav>
   );
 };

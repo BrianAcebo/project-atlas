@@ -3,7 +3,7 @@ import { Logo } from "./ui/Logo";
 export const Footer = () => {
   return (
     <footer className="wrapper">
-      <div className="grid grid-cols-1 gap-6 sm:gap-8 md:grid-cols-3 md:gap-10">
+      <div className="grid grid-cols-1 gap-6 sm:grid-cols-2 sm:gap-8 md:grid-cols-3 md:gap-10">
         <div className="flex flex-col gap-6 sm:gap-8 md:gap-10">
           <div>
             <p className="mb-2 text-lg font-medium sm:mb-3 sm:text-xl">
