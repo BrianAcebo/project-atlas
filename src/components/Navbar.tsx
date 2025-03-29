@@ -2,6 +2,7 @@ import { Logo } from "./ui/Logo";
 import { Button } from "./ui/Button";
 import { useState, useRef } from "react";
 import { CSSTransition } from "react-transition-group";
+import { slowScroll } from "../utils";
 
 const links = [
   {
@@ -21,7 +22,11 @@ const links = [
 const MainNav = () => {
   const listItems = links.map(({ name, href }, i) => (
     <li key={`${Date.now().toString()}-${i}`} className="font-extralight">
-      <a href={href} className="hover:text-brand-blue-300 text-white">
+      <a
+        href={href}
+        onClick={slowScroll}
+        className="hover:text-brand-blue-300 text-white"
+      >
         {name}
       </a>
     </li>
@@ -49,9 +54,9 @@ const MobileSidePanel = ({ open }: { open: boolean | undefined }) => {
     <div
       className={`bg-brand-blue-dark ${open ? "visible right-0 opacity-100" : "invisible -right-[100vw] opacity-0"} fixed top-0 z-10 h-screen w-full overscroll-contain transition-all duration-300`}
     >
-      <div className="flex h-full w-full items-center justify-center">
+      <nav className="flex h-full w-full items-center justify-center">
         <MainNav />
-      </div>
+      </nav>
     </div>
   );
 };
@@ -61,8 +66,8 @@ export const Navbar = () => {
   const nodeRef = useRef(null);
 
   return (
-    <nav className="font-montserrat bg-brand-blue-dark fixed top-0 z-20 w-full p-4">
-      <div className="mx-auto flex h-full w-full max-w-7xl items-center justify-between">
+    <header className="font-montserrat bg-brand-blue-dark fixed top-0 z-50 w-full p-4">
+      <nav className="mx-auto flex h-full w-full max-w-7xl items-center justify-between">
         <div className="fill flex items-center gap-2">
           <Logo className="size-6 fill-white stroke-white" />
           <p className="font-montserrat font-bold">Project Atlas</p>
@@ -89,7 +94,7 @@ export const Navbar = () => {
             <MainNav />
           </div>
         </div>
-      </div>
+      </nav>
 
       <CSSTransition
         nodeRef={nodeRef}
@@ -99,6 +104,6 @@ export const Navbar = () => {
       >
         <MobileSidePanel open={open} />
       </CSSTransition>
-    </nav>
+    </header>
   );
 };

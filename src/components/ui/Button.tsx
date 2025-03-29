@@ -41,7 +41,7 @@ export const Button = ({
 
   return (
     <button
-      className={`${rounded === "true" ? "rounded-full" : ""} font-montserrat px-4 py-2.5 text-sm md:text-base ${className} cursor-pointer transition-all duration-300 ease-in-out hover:scale-105 hover:opacity-90`}
+      className={`${rounded === "true" ? "rounded-full" : ""} font-montserrat block px-4 py-2.5 text-sm md:text-base ${className} cursor-pointer transition-all duration-300 ease-in-out hover:scale-105 hover:opacity-90`}
       onClick={onClick}
     >
       {children}
