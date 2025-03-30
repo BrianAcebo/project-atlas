@@ -68,7 +68,10 @@ export const Navbar = () => {
   const [open, setOpen] = useState(false);
   const nodeRef = useRef(null);
 
-  const handleChildEvent = () => setOpen(!open);
+  const handleChildEvent = () => {
+    if (window.innerWidth > 1024) return;
+    setOpen(false);
+  };
 
   return (
     <header className="font-montserrat bg-brand-blue-dark fixed top-0 z-50 w-full p-4">
