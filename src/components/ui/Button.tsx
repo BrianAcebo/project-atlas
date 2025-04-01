@@ -1,16 +1,4 @@
-export const Button = ({
-  children,
-  onClick,
-  className,
-  type = "default",
-  rounded = "none",
-}: {
-  children?: string;
-  onClick?: (event: React.MouseEvent<HTMLButtonElement>) => void;
-  className?: string;
-  type?: string;
-  rounded?: string;
-}) => {
+export const Button = ({ children, onClick, className, type = "default", rounded = "none" }: { children?: string; onClick?: (event: React.MouseEvent<HTMLButtonElement>) => void; className?: string; type?: string; rounded?: string }) => {
   let typeStyle = "";
 
   switch (type) {
@@ -30,7 +18,7 @@ export const Button = ({
       typeStyle = "border border-white text-white";
       break;
     case "link":
-      typeStyle = "text-brand-blue-dark underline";
+      typeStyle = "underline";
       break;
     default:
       typeStyle = "bg-brand-blue-dark text-white border border-brand-blue-dark";
@@ -40,10 +28,7 @@ export const Button = ({
   className = `${className} ${typeStyle}`;
 
   return (
-    <button
-      className={`${rounded === "true" ? "rounded-full" : ""} font-montserrat block px-4 py-2.5 text-sm md:text-base ${className} cursor-pointer transition-all duration-300 ease-in-out hover:scale-105 hover:opacity-90`}
-      onClick={onClick}
-    >
+    <button className={`${rounded === "true" ? "rounded-full" : ""} font-montserrat block px-4 py-2.5 text-sm md:text-base ${className} cursor-pointer transition-all duration-300 ease-in-out hover:scale-105 hover:opacity-90`} onClick={onClick}>
       {children}
     </button>
   );

@@ -1,6 +1,6 @@
 # Project Atlas – SEO Content Strategy Platform
 
-Project Atlas is a full-stack SaaS application that helps SEO teams visualize topical maps, plan internal linking, and manage content publishing with clarity and speed.
+Project Atlas is a front-end SaaS application that helps SEO teams visualize topical maps, plan internal linking, and manage content publishing with clarity and speed.
 
 ---
 
@@ -14,99 +14,55 @@ Project Atlas is a full-stack SaaS application that helps SEO teams visualize to
 
 - **Topical Map Visualizer**  
   Interactive graph view of your content strategy (pillar → cluster → supporting).
+
 - **Post Planner Drawer**  
   Click a topic to slide out a metadata editor with fields like:
 
-  - Focus keyword
+  - Title
+  - Published Status
+  - Internal links
+
+  Coming soon
+
   - Search intent
   - Target URL
-  - Internal links
-  - AI suggestions for new content (mocked in MVP)
-
-- **Performance Insights Panel**  
-  Displays real-time data on bundle size, FPS, and load time across frameworks.
-
-- **Modular Frontends**  
-  Built with three separate frontends to compare performance and DX:
-  - `frontend-react`
-  - `frontend-vue`
-  - `frontend-svelte`
+  - Focus keyword
 
 ---
 
 ## Tech Stack
 
-| Layer          | Tech                                  |
-| -------------- | ------------------------------------- |
-| Backend        | Node.js (Fastify), Prisma, PostgreSQL |
-| Frontends      | React (Vite), Vue 3 (Vite), SvelteKit |
-| UI Libraries   | Tailwind CSS, shadcn/ui (React)       |
-| Graph Viz      | Cytoscape.js                          |
-| AI Stub        | Mocked OpenAI Suggestions             |
-| Auth (Planned) | Clerk or Supabase                     |
-| Deployment     | Vercel, Netlify, Render               |
-| Testing        | Cypress, Vitest, Lighthouse           |
-
----
-
-## Architecture Overview
-
-```plaintext
-  ┌───────────────────────────┐
-  │        Client App         │
-  │ (React / Vue / SvelteKit) │
-  └────────────┬──────────────┘
-                │ Fetch API
-  ┌────────────▼──────────────┐
-  │        Fastify API        │
-  │  /topics, /topics/:id     │
-  └────────────┬──────────────┘
-                │ ORM
-  ┌────────────▼──────────────┐
-  │        PostgreSQL         │
-  │     (via Prisma ORM)      │
-  └───────────────────────────┘
-```
-
----
-
-## Project Structure
-
-```plaintext
-/api-server        → Fastify backend w/ Prisma
-/frontend-react    → React app w/ topic map + drawer
-/frontend-vue      → Vue app
-/frontend-svelte   → SvelteKit app
-/shared            → Shared types, utils (optional)
-```
-
----
+| Layer        | Tech                               |
+| ------------ | ---------------------------------- |
+| Backend      | Good ol' local storage 😉          |
+| Frontend     | React + Vite                       |
+| UI Libraries | Tailwind CSS                       |
+| Graph Viz    | React Flow                         |
+| Deployment   | Vercel                             |
+| Testing      | Vitest, Testing Library, Storybook |
 
 ## How to Run Locally
 
 1. Clone the Repo
 
 ```plaintext
-git clone https://github.com/your-username/content-atlas.git
-cd content-atlas
+git clone https://github.com/BrianAcebo/project-atlas.git
+cd project-atlas
 ```
 
-2. Start the Backend
+2. Start it up
 
 ```plaintext
-cd api-server
-npm install
-npx prisma migrate dev
+npm install --legacy-peer-deps
 npm run dev
 ```
 
-3. Start a Frontend (React Example)
+2. tEsT iT?
 
 ```plaintext
-cd ../frontend-react
-npm install
-npm run dev
-Repeat for frontend-vue and frontend-svelte.
+npm run test / npm run test:ui (Opens the Vitest UI)
+or
+npm run storybook
 ```
 
 ---
