@@ -274,12 +274,12 @@ export const TopicalMap = () => {
         <p className="mb-4 max-w-md text-gray-400">Choose a topic cluster type below or creating one from scratch.</p>
         <div className="flex flex-wrap justify-center gap-4">
           {exampleTopicClusters.map((cluster) => (
-            <button key={cluster.id} onClick={() => createFromTemplate(cluster)} className="rounded bg-blue-600 px-4 py-2 text-sm text-white hover:bg-blue-700">
-              <CiSquarePlus className="size-3" /> {cluster.name}
+            <button key={cluster.id} onClick={() => createFromTemplate(cluster)} className="bg-brand-blue flex cursor-pointer items-center gap-2 rounded px-4 py-2 text-sm text-white transition-colors hover:bg-blue-700">
+              <CiSquarePlus className="size-5" /> {cluster.name}
             </button>
           ))}
-          <button onClick={() => addTopic()} className="rounded border px-4 py-2 text-sm text-gray-700 hover:bg-gray-100">
-            <CiSquarePlus className="size-3" /> Start from scratch
+          <button onClick={() => addTopic()} className="hover:text-brand-blue-dark flex cursor-pointer items-center gap-2 rounded border px-4 py-2 text-sm text-gray-400 transition-colors hover:bg-gray-100">
+            <CiSquarePlus className="size-5" /> Start from scratch
           </button>
         </div>
       </div>

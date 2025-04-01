@@ -94,7 +94,7 @@ export const ClusterList = () => {
         <h2 className="mb-2 text-2xl font-semibold">No Clusters Found</h2>
         <p className="mb-4 max-w-md text-gray-400">Start building your content strategy by creating a topic cluster.</p>
         <div className="flex flex-wrap justify-center gap-4">
-          <button onClick={() => addCluster()} className="flex cursor-pointer gap-2 rounded border px-4 py-2 text-sm text-gray-400 transition-colors hover:bg-gray-100">
+          <button onClick={() => addCluster()} className="hover:text-brand-blue-dark flex cursor-pointer gap-2 rounded border px-4 py-2 text-sm text-gray-400 transition-colors hover:bg-gray-100">
             <CiSquarePlus className="size-5" /> Create cluster
           </button>
         </div>
